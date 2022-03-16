@@ -1,38 +1,59 @@
 const title = document.querySelector(".title");
+const album = document.querySelector(".album");
+const artist = document.querySelector(".artist");
 const prev = document.querySelector(".prev");
 const playPause = document.querySelector(".playPause");
 const next = document.querySelector(".next");
 const audio = document.querySelector("audio");
+const albumCover = document.querySelector(".albumCover");
+
+const timer = document.querySelector("#current-time");
+const songDuration = document.querySelector("#duration");
+
 
 const playBtn = document.querySelector(".playBtn");
 const pauseBtn = document.querySelector(".pauseBtn");
+
+const player = document.getElementById("player");
 
 //song list
 
 const songList = [
     {
         path: "metamorphosis/StreamogGrime.mp3",
-        songName: "Stream / Grime"
+        songName: "Stream / Grime",
+        album: "Metamorphosis",
+        artist: "Ckin",
     },
     {
         path: "metamorphosis/Matutinal.mp3",
-        songName: "Matutinal"
+        songName: "Matutinal",
+        album: "Metamorphosis",
+        artist: "Ckin"
     },
     {
         path: "metamorphosis/Cohere.mp3",
-        songName: "Cohere"
+        songName: "Cohere",
+        album: "Metamorphosis",
+        artist: "Ckin"
     },
     {
         path: "metamorphosis/Coup_d'aeil.mp3",
-        songName: "Coup D'œil"
+        songName: "Coup D'œil",
+        album: "Metamorphosis",
+        artist: "Ckin"
     },
     {
         path: "metamorphosis/TheImposing.mp3",
-        songName: "The Imposing"
+        songName: "The Imposing",
+        album: "Metamorphosis",
+        artist: "Ckin"
     }
 ];
 
 let song_Playing = false;
+
+
 
 //play song
 function playSong(){
@@ -40,7 +61,7 @@ function playSong(){
     audio.play();
     playBtn.classList.add("hidden");
     pauseBtn.classList.remove("hidden");
-
+    albumCover.style.animationPlayState = "running";
 }
 //pause song
 function pauseSong(){
@@ -48,6 +69,8 @@ function pauseSong(){
     audio.pause();
     pauseBtn.classList.add("hidden");
     playBtn.classList.remove("hidden");
+    albumCover.style.animationPlayState = "paused";
+
 }
 
 //play or pause on click
@@ -58,6 +81,8 @@ playPause.addEventListener("click", () => (song_Playing ?
 //load song
 function loadSong(songList) {
     title.textContent = songList.songName;
+    album.textContent = songList.album;
+    artist.textContent = songList.artist;
     audio.src = songList.path;
 }
 
@@ -90,3 +115,52 @@ function nextSong(){
 }
 
 next.addEventListener("click", nextSong);
+
+
+// ~~~Progress bar~~~
+
+const progressBar = document.querySelector("#progressBar");
+
+// Set max value when you know the duration
+audio.onloadedmetadata = function() { 
+    progressBar.max = audio.duration;
+    let totalMins = Math.floor(audio.duration / 60);
+    let totalSecs = Math.floor(audio.duration % 60);
+    if (totalSecs < 10) {
+        totalSecs = '0' + String(totalSecs);}
+    songDuration.innerHTML = totalMins + ':' + totalSecs;
+}
+// update audio position
+progressBar.onchange = () => audio.currentTime = progressBar.value;
+
+
+// Timer
+// update range input when currentTime updates
+audio.ontimeupdate = function() {
+    progressBar.value = audio.currentTime
+    let currentMins = Math.floor(audio.currentTime / 60);
+    let currentSecs = Math.floor(audio.currentTime % 60);
+    if (currentSecs < 10) {
+    currentSecs = '0' + String(currentSecs);}
+    timer.innerHTML = currentMins + ':' + currentSecs;
+};
+
+
+
+// Resources
+
+
+// Update timer
+// https://www.w3schools.com/Tags/av_event_timeupdate.asp
+
+// Get audio duration in JS and display in HTML
+// https://stackoverflow.com/questions/65697079/get-audio-duration-in-js-and-display-in-html
+
+// Display seconds in min and sec
+// https://stackoverflow.com/questions/4993097/html5-display-audio-currenttime
+
+// Update progress bar
+// https://stackoverflow.com/questions/41076205/use-input-type-range-to-seek-audio
+
+// Styling slider input
+// https://css-tricks.com/sliding-nightmare-understanding-range-input/

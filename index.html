@@ -11,10 +11,50 @@
     <header></header>
     <main>
       <div class="music">
-        <img src="" alt="metamorphosis" />
-        <h2 class="title">Song Title</h2>
+        <div class="topBtns">
+          <span class="backBtn">hello</span>
+          <span class="songListBtn">hello</span>
+        </div>
+        <img
+          class="albumCover"
+          src="assets/metamorphosis-cover.png"
+          alt="metamorphosis"
+        />
+        <div class="songInfo">
+          <h2 class="title">Song Title</h2>
+          <h3 class="album"></h3>
+          <h3 class="artist"></h3>
+        </div>
+
+        <!-- <div class="progressBar">
+          <div class="filled"></div>
+        </div> -->
+
+        <div class="progressBar">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="0"
+            class="slider"
+            id="progressBar"
+          />
+          <div class="songTime">
+            <span id="current-time" class="time">0:00</span>
+            <span id="duration" class="time">0:00</span>
+          </div>
+        </div>
+
+        <!-- <span id="current-time" class="time">0:00</span>
+        <input type="range" id="seek-slider" max="100" value="0" />
+        <span id="duration" class="time">0:00</span>
+        <output id="volume-output">100</output>
+        <input type="range" id="volume-slider" max="100" value="100" /> -->
+
+        <!-- <progress id="progress" value="0" max="100"></progress> -->
+
         <div class="player">
-          <audio src=""></audio>
+          <audio id="player" src="" preload="metadata"></audio>
           <div class="btns">
             <span class="prev">
               <svg
