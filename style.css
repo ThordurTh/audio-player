@@ -1,3 +1,9 @@
+:root {
+  --basic-box-shadow: 10px 10px 22px #1a1b1d, -10px -10px 22px #2e3135;
+  --active-box-shadow: inset 0 -7px 5px rgba(0, 0, 0, 0.025),
+    inset 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,18 +20,22 @@ main {
 }
 
 .music {
+  /* background: linear-gradient(#34393f, #17191c); */
+  background: #242629;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 375px;
   height: 812px;
+  border-radius: 45px;
+  box-shadow: var(--basic-box-shadow);
 }
 
 .title {
   font-weight: 400;
   font-size: 2rem;
-  color: #38a7ff;
+  color: #2dcfd7;
   display: inline-flex;
   text-align: center;
   margin-bottom: 20px;
@@ -33,14 +43,13 @@ main {
 
 .player {
   position: relative;
-  width: 500px;
-  min-height: 100px;
-  background: #26282b;
-
+  width: 100%;
   border-radius: 80px;
   padding: 20px 30px;
-  box-shadow: -10px -10px 15px #26282b, 10px 10px 15px rgba(0, 0, 0, 0.1),
-    inset -5px -5px 15px #26282b, inset 5px 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  align-items: flex-end;
+  /* box-shadow: -10px -10px 15px #26282b, 10px 10px 15px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 15px #26282b, inset 5px 5px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .btns {
@@ -56,7 +65,6 @@ main {
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,25 +72,32 @@ main {
   cursor: pointer;
   /* box-shadow: inset 0 -5px 5px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.1),
     0 10px 15px rgba(0, 0, 0, 0.1); */
-  background: radial-gradient(#202225, #27292c);
+  /* border: 3px solid #21252a; */
+  background: linear-gradient(145deg, #27292c, #202225);
   box-shadow: 10px 10px 22px #1a1b1d, -10px -10px 22px #2e3135;
+}
+
+.btns span.playPause {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(145deg, #197377, #25afb6);
+}
+
+svg {
+  filter: invert(100%) sepia(0%) saturate(7488%) hue-rotate(315deg)
+    brightness(90%) contrast(99%);
 }
 
 .btns span:active,
 .btns span.active {
-  box-shadow: inset 0 -7px 5px rgba(0, 0, 0, 0.025),
-    inset 0 5px 10px rgba(0, 0, 0, 0.15);
+  background: #242629;
+  box-shadow: inset 10px 10px 22px #1a1b1d, inset -10px -10px 22px #2e3135;
 }
 
 .btns span svg:active,
 .btns span svg.active {
   filter: invert(74%) sepia(18%) saturate(1026%) hue-rotate(124deg)
     brightness(89%) contrast(88%);
-}
-
-.btns span.playPause {
-  width: 100px;
-  height: 100px;
 }
 
 .btns span svg {
