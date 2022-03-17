@@ -62,6 +62,8 @@ function playSong(){
     playBtn.classList.add("hidden");
     pauseBtn.classList.remove("hidden");
     albumCover.style.animationPlayState = "running";
+    // audio.addEventListener("ended", nextSong);
+
 }
 //pause song
 function pauseSong(){
@@ -145,22 +147,9 @@ audio.ontimeupdate = function() {
     timer.innerHTML = currentMins + ':' + currentSecs;
 };
 
+// Play next song
+audio.addEventListener('ended',function(){
+    nextSong(); 
+  });
 
 
-// Resources
-
-
-// Update timer
-// https://www.w3schools.com/Tags/av_event_timeupdate.asp
-
-// Get audio duration in JS and display in HTML
-// https://stackoverflow.com/questions/65697079/get-audio-duration-in-js-and-display-in-html
-
-// Display seconds in min and sec
-// https://stackoverflow.com/questions/4993097/html5-display-audio-currenttime
-
-// Update progress bar
-// https://stackoverflow.com/questions/41076205/use-input-type-range-to-seek-audio
-
-// Styling slider input
-// https://css-tricks.com/sliding-nightmare-understanding-range-input/
