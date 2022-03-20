@@ -47,6 +47,23 @@ const songList = [
         path: "metamorphosis/TheImposing.mp3",
         songName: "The Imposing",
         album: "Metamorphosis",
+        artist: "Ckin",
+    },
+    {
+        path: "metamorphosis/GlacierBear.mp3",
+        songName: "GlacierBear",
+        album: "Metamorphosis",
+        artist: "Ckin",
+    },
+    {
+        path: "metamorphosis/SnOw.mp3",
+        songName: "SnOw",
+        album: "Metamorphosis",
+        artist: "Ckin",
+    },{
+        path: "metamorphosis/ShiveringTundra.mp3",
+        songName: "Shivering Tundra",
+        album: "Metamorphosis",
         artist: "Ckin"
     }
 ];
@@ -98,7 +115,7 @@ loadSong(songList[i])
 function prevSong(){
     i--;
     if (i < 0){
-        i = songList.length - 1;
+        i = songList.length - 1 ;
     }
     loadSong(songList[i]);
     playSong();
@@ -129,7 +146,8 @@ audio.onloadedmetadata = function() {
     let totalMins = Math.floor(audio.duration / 60);
     let totalSecs = Math.floor(audio.duration % 60);
     if (totalSecs < 10) {
-        totalSecs = '0' + String(totalSecs);}
+        totalSecs = '0' + String(totalSecs) ;
+    }
     songDuration.innerHTML = totalMins + ':' + totalSecs;
 }
 // update audio position
@@ -143,7 +161,8 @@ audio.ontimeupdate = function() {
     let currentMins = Math.floor(audio.currentTime / 60);
     let currentSecs = Math.floor(audio.currentTime % 60);
     if (currentSecs < 10) {
-    currentSecs = '0' + String(currentSecs);}
+    currentSecs = '0' + String(currentSecs);
+}
     timer.innerHTML = currentMins + ':' + currentSecs;
 };
 
@@ -152,4 +171,4 @@ audio.addEventListener('ended',function(){
     nextSong(); 
   });
 
-
+  

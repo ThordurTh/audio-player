@@ -41,6 +41,16 @@ main {
   align-items: center;
   width: 100%;
   padding: 30px 30px 20px;
+  color: rgb(187, 187, 187);
+}
+
+.backBtn svg {
+  width: 25%;
+  margin-right: 0.1rem;
+}
+
+.songListBtn svg {
+  width: 50%;
 }
 
 .topBtns span {
@@ -169,6 +179,7 @@ main {
 .songInfo h3 {
   color: rgb(110, 110, 110);
   font-size: 1rem;
+  font-weight: 400;
 }
 
 .player {
